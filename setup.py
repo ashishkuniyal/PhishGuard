@@ -30,10 +30,10 @@ def get_requirements()->List[str]:
     return requirement_lst
 
 setup(
-    name="NetworkSecurity",
+    name="PhishGuard",
     version="0.0.1",
-    author="Krish Naik",
-    author_email="krishnaik06@gmail.com",
+    author="Ashish Kuniyal",
+    author_email="Aashishkuniyal2024@gmail.com",
     packages=find_packages(),
     install_requires=get_requirements()
 )

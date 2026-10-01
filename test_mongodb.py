@@ -1,14 +1,24 @@
+import os
+from dotenv import load_dotenv
+from pymongo import MongoClient
 
-from pymongo.mongo_client import MongoClient
+# Load variables from .env
+load_dotenv()
 
-uri ="mongodb+srv://aashishkuniyal2024_db_user:ashish12@cluster0.wxaqtuz.mongodb.net/"
+# Get MongoDB URL from .env
+uri = os.getenv("MONGO_DB_URL")
 
-# Create a new client and connect to the server
+if not uri:
+    raise ValueError("MONGO_DB_URL is not configured in .env")
+
+# Create MongoDB client
 client = MongoClient(uri)
 
-# Send a ping to confirm a successful connection
 try:
-    client.admin.command('ping')
-    print("Pinged your deployment. You successfully connected to MongoDB!")
+    client.admin.command("ping")
+    print("Successfully connected to MongoDB Atlas!")
+
+    print("Server:", client.address)
+
 except Exception as e:
-    print(e)
+    print("MongoDB connection error:", e)
